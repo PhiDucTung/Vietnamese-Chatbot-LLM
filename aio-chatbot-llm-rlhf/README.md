@@ -227,12 +227,6 @@ Mỗi lần bàn giao cần ghi: **người phụ trách, model ID/đường d�
 - [Thành viên 2 — Reward model](docs/02_thanh_vien_2_reward_model.md).
 - [Thành viên 3 — PPO RLHF](docs/03_thanh_vien_3_ppo_rlhf.md).
 - [Thành viên 4 — Triển khai](docs/04_thanh_vien_4_deployment.md).
-- [Hướng dẫn Git: branch, commit, push và PR](docs/05_huong_dan_git.md).
 
 Mỗi nhiệm vụ dùng branch riêng, mở PR vào `main` và nhờ một thành viên khác review. Không commit token, môi trường ảo, dataset hoặc checkpoint. Model lớn lưu ở Hugging Face hoặc nơi lưu artifact của nhóm, trong repo ghi ID và revision.
 
-## Tham khảo và giấy phép
-
-Dự án dựa trên tài liệu học tập `[Description_v2]-Project_Vietnamses_Chatbot_using_LLM.pdf`, phần hướng dẫn SFT → RM → PPO → triển khai. Các công cụ và phiên bản phải được đối chiếu với tài liệu chính thức khi thực hiện.
-
-Repo chưa chọn giấy phép mã nguồn. File [LICENSE](LICENSE) hiện là nội dung chờ thống nhất; kiểm tra thêm giấy phép model nền và dataset trước khi sử dụng hoặc phân phối.
