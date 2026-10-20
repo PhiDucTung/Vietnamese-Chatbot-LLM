@@ -36,4 +36,3 @@ Phụ trách: `src/sft/dataset.py` và `src/sft/train_sft.py`.
 - Model sử dụng được ngữ cảnh của các lượt hội thoại trước.
 - Thành viên 2 và 3 xác nhận dùng được model SFT bàn giao.
 
-Tham khảo: PDF mục II.1, trang 4–8. [Về phân công](README.md).

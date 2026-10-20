@@ -37,4 +37,4 @@ Phụ trách: `src/deployment/serve_vllm.sh` và `src/deployment/app.py`.
 - Hội thoại giữ ngữ cảnh, hiển thị streaming và reset hoạt động đúng.
 - Người khác trong nhóm có thể làm theo hướng dẫn để khởi động hệ thống.
 
-Tham khảo: PDF mục II.4, trang 13–15. [Về phân công](README.md).
+

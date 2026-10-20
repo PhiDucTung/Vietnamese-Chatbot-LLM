@@ -38,4 +38,3 @@ Phụ trách: `src/rlhf/train_ppo.sh` và `src/rlhf/ray_cluster.py`.
 - Có đánh giá phản hồi thực tế, ghi rõ cả trường hợp PPO chưa cải thiện.
 - Thành viên 4 nạp được policy để triển khai; không bàn giao reward model thay policy.
 
-Tham khảo: PDF mục II.3, trang 11–13. [Về phân công](README.md).

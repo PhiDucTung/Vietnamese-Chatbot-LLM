@@ -39,4 +39,3 @@ Phụ trách: `src/reward_model/train_rm.py` và `src/reward_model/merge_lora.py
 
 Tên checkpoint có `RM-DPO` trong PDF là tên artifact; phần việc này là huấn luyện reward model, không phải huấn luyện policy bằng DPO.
 
-Tham khảo: PDF mục II.2, trang 8–10. [Về phân công](README.md).
