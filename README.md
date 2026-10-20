@@ -223,10 +223,10 @@ Mỗi lần bàn giao cần ghi: **người phụ trách, model ID/đường d�
 ## Hướng dẫn chi tiết và làm việc nhóm
 
 - [Phân công và thứ tự bàn giao](docs/README.md).
-- [Thành viên 1 — SFT](docs/01_thanh_vien_1_sft.md).
-- [Thành viên 2 — Reward model](docs/02_thanh_vien_2_reward_model.md).
-- [Thành viên 3 — PPO RLHF](docs/03_thanh_vien_3_ppo_rlhf.md).
-- [Thành viên 4 — Triển khai](docs/04_thanh_vien_4_deployment.md).
+- [Thành viên 1 — SFT](aio-chatbot-llm-rlhf/docs/01_thanh_vien_1_sft.md).
+- [Thành viên 2 — Reward model](aio-chatbot-llm-rlhf/docs/02_thanh_vien_2_reward_model.md).
+- [Thành viên 3 — PPO RLHF](aio-chatbot-llm-rlhf/docs/03_thanh_vien_3_ppo_rlhf.md).
+- [Thành viên 4 — Triển khai](aio-chatbot-llm-rlhf/docs/04_thanh_vien_4_deployment.md).
 
 Mỗi nhiệm vụ dùng branch riêng, mở PR vào `main` và nhờ một thành viên khác review. Không commit token, môi trường ảo, dataset hoặc checkpoint. Model lớn lưu ở Hugging Face hoặc nơi lưu artifact của nhóm, trong repo ghi ID và revision.
 
