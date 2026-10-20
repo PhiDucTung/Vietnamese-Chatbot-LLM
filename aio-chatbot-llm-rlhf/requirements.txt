@@ -1,0 +1,17 @@
+# Khung thư viện dự kiến; chốt phiên bản theo CUDA/GPU trước khi cài.
+# Unsloth, vLLM, DeepSpeed và OpenRLHF có thể cần môi trường riêng.
+# unsloth
+# vllm
+# gradio
+# torch
+# transformers
+# datasets
+# accelerate
+# peft
+# trl
+# bitsandbytes
+# deepspeed
+# openrlhf
+# ray
+# wandb
+# jupyter

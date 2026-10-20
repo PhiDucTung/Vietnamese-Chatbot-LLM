@@ -1,0 +1,29 @@
+# Python và môi trường ảo
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+
+# Dữ liệu và kết quả huấn luyện
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+checkpoints/
+outputs/
+runs/
+wandb/
+logs/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# File nhạy cảm và hệ điều hành
+*.pem
+*.key
+.DS_Store
