@@ -222,7 +222,6 @@ Mỗi lần bàn giao cần ghi: **người phụ trách, model ID/đường d�
 
 ## Hướng dẫn chi tiết và làm việc nhóm
 
-- [Phân công và thứ tự bàn giao](docs/README.md).
 - [Thành viên 1 — SFT](aio-chatbot-llm-rlhf/docs/01_thanh_vien_1_sft.md).
 - [Thành viên 2 — Reward model](aio-chatbot-llm-rlhf/docs/02_thanh_vien_2_reward_model.md).
 - [Thành viên 3 — PPO RLHF](aio-chatbot-llm-rlhf/docs/03_thanh_vien_3_ppo_rlhf.md).
