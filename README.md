@@ -227,7 +227,6 @@ Mỗi lần bàn giao cần ghi: **người phụ trách, model ID/đường d�
 - [Thành viên 2 — Reward model](docs/02_thanh_vien_2_reward_model.md).
 - [Thành viên 3 — PPO RLHF](docs/03_thanh_vien_3_ppo_rlhf.md).
 - [Thành viên 4 — Triển khai](docs/04_thanh_vien_4_deployment.md).
-- [Hướng dẫn Git: branch, commit, push và PR](docs/05_huong_dan_git.md).
 
 Mỗi nhiệm vụ dùng branch riêng, mở PR vào `main` và nhờ một thành viên khác review. Không commit token, môi trường ảo, dataset hoặc checkpoint. Model lớn lưu ở Hugging Face hoặc nơi lưu artifact của nhóm, trong repo ghi ID và revision.
 
