@@ -228,5 +228,5 @@ Mỗi lần bàn giao cần ghi: **người phụ trách, model ID/đường d�
 - [Thành viên 4 — Triển khai](aio-chatbot-llm-rlhf/docs/04_thanh_vien_4_deployment.md).
 - [Hướng dẫn sử dụng Git — branch, commit, push và PR](aio-chatbot-llm-rlhf/docs/05_huong_dan_git.md).
 
-Mỗi nhiệm vụ dùng branch riêng, mở PR vào `main` và nhờ một thành viên khác review. Không commit token, môi trường ảo, dataset hoặc checkpoint. Model lớn lưu ở Hugging Face hoặc nơi lưu artifact của nhóm, trong repo ghi ID và revision.
+Mỗi thành viên dùng một branch cố định: `member-1-sft`, `member-2-reward`, `member-3-ppo`, `member-4-deployment`. Sau mỗi đợt công việc, mở PR vào `main` và nhờ một thành viên khác review; merge bằng merge commit, giữ branch và đồng bộ lại `main` trước khi làm tiếp. Không commit token, môi trường ảo, dataset hoặc checkpoint. Model lớn lưu ở Hugging Face hoặc nơi lưu artifact của nhóm, trong repo ghi ID và revision.
 

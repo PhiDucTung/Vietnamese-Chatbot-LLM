@@ -41,35 +41,50 @@ Cấu hình này chỉ áp dụng cho repo hiện tại. Xác thực push qua SS
 
 ## 3. Luồng làm việc của nhóm
 
-**Nhận nhiệm vụ → tạo branch → sửa và kiểm tra → commit → push → mở PR → review → merge vào main.**
+**Tạo branch cá nhân một lần → đồng bộ main → làm việc → commit → push → PR → review → merge → tiếp tục trên cùng branch.**
 
 - `main` là nhánh tích hợp đã được nhóm kiểm tra.
-- Mỗi nhiệm vụ có một branch riêng, không dùng một branch cá nhân kéo dài suốt dự án.
+- Mỗi thành viên dùng một branch cố định suốt dự án; các nhiệm vụ được chia bằng issue, commit và PR. Không tạo branch mới cho từng nhiệm vụ.
 - Commit lưu nội dung đã chọn trên máy; push mới chia sẻ commit lên GitHub.
 - PR (pull request) là đề nghị review và hợp nhất code vào `main`.
 
-| Thành viên | Nhiệm vụ và branch ví dụ |
-|---|---|
-| 1 — SFT | `feat/sft-dataset`, `feat/sft-training` |
-| 2 — RM | `feat/rm-training`, `feat/rm-merge` |
-| 3 — PPO | `feat/ppo-config`, `feat/ppo-training` |
-| 4 — Triển khai | `feat/vllm-serving`, `feat/gradio-ui` |
+| Thành viên | Branch cố định | Phần việc |
+|---|---|---|
+| 1 | `member-1-sft` | Dữ liệu và huấn luyện SFT |
+| 2 | `member-2-reward` | Reward model và merge LoRA |
+| 3 | `member-3-ppo` | Ray và PPO RLHF |
+| 4 | `member-4-deployment` | vLLM và Gradio |
 
-Thống nhất trước khi sửa file chung như README, requirements hoặc cấu hình. Mỗi PR nên có một người khác review. Model lớn bàn giao qua Hugging Face/nơi lưu artifact; Git chỉ lưu code, cấu hình và thông tin model ID/revision.
+Repo có `main` và 4 branch thành viên. Mỗi người chỉ push vào branch của mình; thống nhất trước khi cần hỗ trợ trên branch người khác. Không tự đổi tên hoặc xóa các branch đã được nhóm sử dụng.
 
-## 4. Bắt đầu nhiệm vụ mới
+## 4. Tạo branch một lần và tiếp tục công việc
 
-Trước hết chạy `git status`. Nếu có thay đổi chưa lưu, commit trên branch hiện tại hoặc dùng stash ở phần 9 trước khi chuyển branch.
-
-Khi working tree sạch:
+Trước khi chuyển branch, chạy `git status`; commit hoặc stash công việc chưa lưu (phần 9). Ví dụ dành cho thành viên 1, khi working tree sạch:
 
 ```bash
 git switch main
 git pull --ff-only origin main
-git switch -c feat/sft-dataset
+git switch -c member-1-sft
+git push -u origin member-1-sft
 ```
 
-Thay tên branch bằng nhiệm vụ thực tế. Nếu branch đã tồn tại và bạn muốn tiếp tục nó, dùng `git switch ten-branch` thay vì `-c`. Nếu `pull --ff-only` thất bại, kiểm tra lịch sử; không reset hoặc force push để vượt lỗi.
+Thành viên 2, 3, 4 thay `member-1-sft` bằng branch của mình trong bảng. Chỉ dùng `-c` lần đầu. Nếu branch đã có trên máy, dùng `git switch member-1-sft`. Nếu mới clone và branch đã có trên GitHub:
+
+```bash
+git fetch origin
+git switch --track origin/member-1-sft
+```
+
+Mỗi buổi làm việc tiếp theo, từ working tree sạch:
+
+```bash
+git switch member-1-sft
+git pull --ff-only origin member-1-sft
+git fetch origin
+git merge origin/main
+```
+
+Giữ branch cá nhân đồng bộ với `main`, đặc biệt sau khi nhận phần việc của thành viên khác. Nếu `pull --ff-only` thất bại, kiểm tra lịch sử; không reset hoặc force push để vượt lỗi.
 
 ## 5. Stage và commit
 
@@ -109,10 +124,10 @@ Chạy kiểm tra phù hợp trước commit. Không cần full training cho m�
 
 ## 6. Push và mở pull request
 
-Push lần đầu trên branch nhiệm vụ:
+Push lần đầu trên branch thành viên:
 
 ```bash
-git push -u origin feat/sft-dataset
+git push -u origin member-1-sft
 ```
 
 Những lần tiếp theo, sau khi commit thêm trên branch đó:
@@ -124,24 +139,26 @@ git push
 Trên GitHub:
 
 1. Mở repo → Pull requests → New pull request.
-2. Chọn base `main`, compare là branch nhiệm vụ.
+2. Chọn base `main`, compare là branch thành viên.
 3. Ghi việc đã làm, cách kiểm tra, kết quả và phần còn thiếu; liên kết issue nếu có.
 4. Chọn Draft PR nếu còn đang cấu hình/phát triển; chuyển Ready for review khi sẵn sàng.
 5. Sửa theo góp ý bằng commit và push trên cùng branch; PR tự cập nhật.
-6. Sau review, người được nhóm phân công merge chọn Squash and merge nếu repo cho phép.
+6. Sau review, người được nhóm phân công merge chọn **Create a merge commit** để giữ lịch sử của branch cố định. Chủ repo cần bật tùy chọn merge commit; không dùng squash/rebase merge trong quy trình này và không bật tự động xóa branch sau merge.
 
-Sau khi merge, từ working tree sạch:
+Sau khi PR được merge, tiếp tục trên branch cá nhân (ví dụ thành viên 1), từ working tree sạch:
 
 ```bash
-git switch main
-git pull --ff-only origin main
+git switch member-1-sft
+git fetch origin
+git merge origin/main
+git push
 ```
 
-Tạo branch mới cho nhiệm vụ kế tiếp. Có thể xóa branch remote bằng nút Delete branch trên PR. Với branch local, thử `git branch -d ten-branch`; sau squash merge lệnh có thể từ chối do lịch sử khác. Giữ branch cũng không ảnh hưởng dự án; chỉ xóa bằng `-D` sau khi xác nhận không còn công việc riêng cần giữ.
+**Không xóa branch cá nhân sau merge.** Làm nhiệm vụ tiếp theo trên cùng branch, commit và push như bình thường; mở PR mới khi có đợt thay đổi mới. Chỉ giữ một PR đang mở cho mỗi branch: mọi commit push thêm đều vào PR đó. Nếu muốn PR nhỏ, hoàn tất và merge đợt hiện tại trước khi bắt đầu đợt kế tiếp.
 
 ## 7. Đồng bộ code và xử lý conflict
 
-Khi đang ở branch nhiệm vụ, commit hoặc stash thay đổi trước rồi lấy code mới từ `main`:
+Khi đang ở branch thành viên, commit hoặc stash thay đổi trước rồi lấy code mới từ `main`:
 
 ```bash
 git fetch origin
@@ -227,7 +244,7 @@ Với commit đã chia sẻ, ưu tiên commit sửa tiếp theo thay vì viết 
 
 ### Hoàn tác commit đã chia sẻ
 
-Xem mã commit bằng `git log --oneline -10`, tạo branch sửa từ `main` mới nhất, rồi dùng `git revert MA_COMMIT` với mã thật. Kiểm tra, push và mở PR. Với merge commit cần xác định parent riêng trước khi revert; không chạy máy móc. Tránh `git reset --hard` khi chưa hiểu vì có thể mất thay đổi local.
+Xem mã commit bằng `git log --oneline -10`, đồng bộ branch cá nhân với `origin/main` khi working tree sạch, rồi dùng `git revert MA_COMMIT` với mã thật trên branch cá nhân. Kiểm tra, push và mở PR. Với merge commit cần xác định parent riêng trước khi revert; không chạy máy móc. Tránh `git reset --hard` khi chưa hiểu vì có thể mất thay đổi local.
 
 ## 10. Những file không đưa vào commit
 
